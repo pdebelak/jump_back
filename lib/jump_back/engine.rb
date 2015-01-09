@@ -5,5 +5,8 @@ module JumpBack
       g.assets false
       g.helper false
     end
+    initializer "jump_back.methods" do |app|
+      ApplicationController.send :include, JumpBack
+    end
   end
 end

@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'tests/offsite_with_default' => 'tests#offsite_with_default', as: 'offsite_with_default'
+  get 'tests/offsite_without_default' => 'tests#offsite_without_default', as: 'offsite_without_default'
+  resources :tests
+
+  root 'tests#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
