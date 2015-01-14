@@ -6,6 +6,10 @@ As you have probably experienced, `redirect_to :back` can occassionally cause er
 
 Also, sometimes you want to save what a person was doing before you redirected them. Maybe you need them to log in before seeing some content, or maybe there is more than one view that links to an `edit` page and you want to redirect them back to wherever they were after the `update`. `jump_back` adds `save_referer` and `return_to_referer` methods to your `ApplicationController` (and anything that inherits from the `ApplicationController`) to make this functionality easy. See the Usage section below for details.
 
+jump_back is tested in ruby version 1.9.3, 2.0, 2.1, and 2.2 using rails versions 4.0, 4.1, and 4.2.
+
+*From what I can tell it doesn't work with ruby version 2.2 with rails version 4.0, but I assume you wouldn't use those together, right?*
+
 [![Build Status](https://travis-ci.org/pdebelak/jump_back.svg?branch=master)](https://travis-ci.org/pdebelak/jump_back)
 
 ## Installation
