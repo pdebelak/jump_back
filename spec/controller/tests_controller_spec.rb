@@ -150,5 +150,17 @@ describe TestsController, type: :controller do
       get :show, id: 1
       expect(response).to redirect_to(new_test_path)
     end
+    
+    it 'should pass options to redirect_to with a default path specified' do
+      get :show, id: 1
+      expect(flash[:alert]).to eq('Go away!')
+      expect(response.status).to eq(301)
+    end
+    
+    it 'should pass options to redirect_to without a default path specified' do
+      put :update, id: 1
+      expect(flash[:notice]).to eq('Updated!')
+      expect(response.status).to eq(302)
+    end
   end
 end

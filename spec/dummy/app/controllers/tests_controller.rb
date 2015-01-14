@@ -3,7 +3,7 @@ class TestsController < ApplicationController
   end
 
   def show
-    return_to_referer new_test_path
+    return_to_referer new_test_path, alert: 'Go away!', status: 301
   end
 
   def new
@@ -20,7 +20,7 @@ class TestsController < ApplicationController
   end
 
   def update
-    return_to_referer
+    return_to_referer notice: 'Updated!', status: 302
   end
 
   def destroy

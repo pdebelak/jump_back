@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jump_back (0.1.1)
+    jump_back (0.2.1)
       rails (>= 4.0.0)
 
 GEM

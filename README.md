@@ -12,7 +12,7 @@ Also, sometimes you want to save what a person was doing before you redirected t
 
 Add this line to your application's Gemfile:
 
-    gem 'jump_back', '~> 0.1.1'
+    gem 'jump_back', '~> 0.2.1'
 
 And then execute:
 
@@ -96,7 +96,17 @@ Once you have saved the referer, you can call `return_to_referer`.
     
     def action_with_redirect
       # will redirect_to saved referer or a_different_path if a referer was not saved
-      return_to_referer(a_different_path)
+      return_to_referer a_different_path
+    end
+    
+`return_to_referer` also accepts options to pass to `redirect_to`.
+
+    def action_with_notice
+      return_to_referer notice: 'A notice'
+    end
+    
+    def many_options
+      return_to_referer a_different_path, alert: 'Many options!', status: 302
     end
 
 ## Contributing
