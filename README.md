@@ -6,11 +6,13 @@ As you have probably experienced, `redirect_to :back` can occassionally cause er
 
 Also, sometimes you want to save what a person was doing before you redirected them. Maybe you need them to log in before seeing some content, or maybe there is more than one view that links to an `edit` page and you want to redirect them back to wherever they were after the `update`. `jump_back` adds `save_referer` and `return_to_referer` methods to your `ApplicationController` (and anything that inherits from the `ApplicationController`) to make this functionality easy. See the Usage section below for details.
 
+[![Build Status](https://travis-ci.org/pdebelak/jump_back.svg?branch=master)](https://travis-ci.org/pdebelak/jump_back)
+
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'jump_back'
+    gem 'jump_back', '~> 0.1.1'
 
 And then execute:
 
@@ -53,6 +55,16 @@ By default, `redirect_back` will not redirect to referers that are from a differ
     def secret_content
       # if referer not present, will redirect_to a_different_path
       redirect_back(a_different_path, offsite: true) unless logged_in?
+    end
+    
+You can also pass the normal options you would pass to `redirect_to`.
+
+    def eaten_by_bears
+      redirect_back alert: "You've been eaten by bears!", status: 302
+    end
+    
+    def many_options
+      redirect_back a_different_path, offsite: true, notice: "A lot of options", status: :found
     end
     
 ### return_to_referer

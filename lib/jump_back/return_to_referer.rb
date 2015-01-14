@@ -1,4 +1,5 @@
 module JumpBack
+  
   def save_referer
     session[:jump_back_stored_referer] ||= request.referer
   end

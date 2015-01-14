@@ -11,7 +11,7 @@ class TestsController < ApplicationController
   end
 
   def create
-    redirect_back
+    redirect_back notice: 'Created!', status: :moved_permanently
   end
 
   def edit
@@ -29,10 +29,10 @@ class TestsController < ApplicationController
   end
   
   def offsite_with_default
-    redirect_back new_test_path, offsite: true
+    redirect_back new_test_path, offsite: true, alert: 'Offsite with default!'
   end
   
   def offsite_without_default
-    redirect_back offsite: true
+    redirect_back offsite: true, alert: 'Offsite without default!'
   end
 end

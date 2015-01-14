@@ -46,6 +46,38 @@ describe TestsController, type: :controller do
       get :offsite_without_default
       expect(response).to redirect_to(root_path)
     end
+    
+    it 'should pass additional options to redirect_to' do
+      post :create
+      expect(flash[:notice]).to eq('Created!')
+      expect(response.status).to eq(301)
+    end
+    
+    it 'should pass additional options with offsite set to true with default specified and a referer' do
+      @request.env['HTTP_REFERER'] = 'http://rubyonrails.org/'
+      get :offsite_with_default
+      expect(response).to redirect_to('http://rubyonrails.org/')
+      expect(flash[:alert]).to eq('Offsite with default!')
+    end
+    
+    it 'should pass additional options with offsite set to true without default specified and a referer' do
+      @request.env['HTTP_REFERER'] = 'http://rubyonrails.org/'
+      get :offsite_without_default
+      expect(response).to redirect_to('http://rubyonrails.org/')
+      expect(flash[:alert]).to eq('Offsite without default!')
+    end
+    
+    it 'should pass additional options with offsite set to true with default specified and no referer' do
+      get :offsite_with_default
+      expect(response).to redirect_to(new_test_path)
+      expect(flash[:alert]).to eq('Offsite with default!')
+    end
+    
+    it 'should pass additional options with offsite set to true without default specified and no referer' do
+      get :offsite_without_default
+      expect(response).to redirect_to(root_path)
+      expect(flash[:alert]).to eq('Offsite without default!')
+    end
   end
   
   describe 'save_referer' do
