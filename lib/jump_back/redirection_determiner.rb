@@ -1,4 +1,5 @@
 module JumpBack
+  
   class RedirectionDeterminer
     attr_reader :path
     
@@ -7,7 +8,7 @@ module JumpBack
     end
     
     def path_determiner(request, path, options)
-      RefererInterpreter.new.back?(request, options) ? :back : path
+      RefererInterpreter.back?(request, options) ? :back : path
     end
   end
 end

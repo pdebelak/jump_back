@@ -6,7 +6,7 @@ module JumpBack
       g.helper false
     end
     initializer "jump_back.methods" do |app|
-      ApplicationController.send :include, JumpBack
+      ApplicationController.send :include, JumpBack::Redirection
     end
   end
 end
