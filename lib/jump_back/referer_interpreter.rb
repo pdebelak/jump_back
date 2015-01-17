@@ -1,6 +1,6 @@
 module JumpBack
   
-  class RefererInterpreter
+  module RefererInterpreter
     
     def self.back?(request, options)
       has_referer?(request) ? is_local?(request, options) ? true : false : false
@@ -16,19 +16,17 @@ module JumpBack
       !(host && host != request.host)
     end
     
-    private
+    def self.host(string)
+      return URI.parse(string).host if uri? string
+    end
     
-      def self.host(string)
-        return URI.parse(string).host if uri? string
-      end
-    
-      def self.uri?(string)
-        uri = URI.parse(string)
-        %w( http https ).include?(uri.scheme)
-        rescue URI::BadURIError
-        false
-        rescue URI::InvalidURIError
-        false
-      end
+    def self.uri?(string)
+      uri = URI.parse(string)
+      %w( http https ).include?(uri.scheme)
+      rescue URI::BadURIError
+      false
+      rescue URI::InvalidURIError
+      false
+    end
   end
 end

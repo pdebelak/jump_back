@@ -7,8 +7,8 @@ module JumpBack
   module Redirection
     
     def redirect_back(path=root_path, options={})
-      parsed_args = OptionsParser.parse(path, options, root_path)
-      redirect_to RedirectionDeterminer.new(request, parsed_args[:path], parsed_args[:jump_back_options]).path, parsed_args[:redirect_options]
+      options = OptionsParser.new(path: path, options: options, default: root_path)
+      redirect_to RedirectionDeterminer.new(request, options.path, options.jump_back_options).path, options.redirect_options
     end
   end
 end

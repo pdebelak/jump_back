@@ -2,18 +2,25 @@ module JumpBack
   
   class OptionsParser
     
-    def self.parse(path, options, default)
-      if path.is_a? Hash
-        options = path
-        path = default
+    attr_reader :path, :redirect_options, :jump_back_options
+    
+    def initialize(options)
+      @path = parse(options)[:path]
+      @redirect_options = parse(options)[:redirect_options]
+      @jump_back_options = parse(options)[:jump_back_options]
+    end
+    
+    def parse(options)
+      return @options if @options
+      
+      if options[:path].is_a? Hash
+        options[:options] = options[:path]
+        options[:path] = options[:default]
       end
       
-      jump_back_options = { offsite: options.delete(:offsite) }
-      {
-        redirect_options: options,
-        jump_back_options: jump_back_options,
-        path: path
-      }
+      options[:jump_back_options] = { offsite: options[:options].delete(:offsite) }
+      options[:redirect_options] = options.delete(:options)
+      @options = options
     end
   end
 end
