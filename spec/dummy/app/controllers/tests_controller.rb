@@ -1,38 +1,38 @@
 class TestsController < ApplicationController
-  def index
+  def blank
   end
 
-  def show
-    return_to_referer new_test_path, alert: 'Go away!', status: 301
+  def return_with_path
+    return_to_referer save_path, alert: 'Go away!', status: 301
   end
 
-  def new
+  def save
     save_referer
   end
 
-  def create
+  def redirect_with_options
     redirect_back notice: 'Created!', status: :moved_permanently
   end
 
-  def edit
+  def clear_and_save
     clear_referer
     save_referer
   end
 
-  def update
+  def return_with_options
     return_to_referer notice: 'Updated!', status: 302
   end
 
-  def destroy
+  def clear_and_redirect
     clear_referer
-    redirect_back new_test_path
+    redirect_back save_path
   end
   
-  def offsite_with_default
-    redirect_back new_test_path, offsite: true, alert: 'Offsite with default!'
+  def offsite_with_path
+    redirect_back save_path, offsite: true, alert: 'Offsite with default!'
   end
   
-  def offsite_without_default
+  def offsite
     redirect_back offsite: true, alert: 'Offsite without default!'
   end
 end

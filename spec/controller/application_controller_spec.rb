@@ -23,13 +23,19 @@ describe ApplicationController do
     
     it 'should not have the OptionsParser class' do
       expect { ApplicationController::OptionsParser.new }.to raise_error
+      expect(ApplicationController).not_to respond_to :parse
     end
     
-    it 'should not have the RefererInterpreter class' do
-      expect { ApplicationController::RefererInterpreter.new }.to raise_error
+    it 'should not have the RefererInterpreter module' do
+      expect(ApplicationController).not_to respond_to :back?
+      expect(ApplicationController).not_to respond_to :has_referer?
+      expect(ApplicationController).not_to respond_to :is_local?
+      expect(ApplicationController).not_to respond_to :host
+      expect(ApplicationController).not_to respond_to :uri?
     end
     
     it 'should not have the RedirectionDeterminer class' do
+      expect(ApplicationController.new).not_to respond_to :path_determiner
       expect { ApplicationController::RedirectionDeterminer.new }.to raise_error
     end
   end
