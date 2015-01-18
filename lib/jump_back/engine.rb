@@ -7,6 +7,7 @@ module JumpBack
     end
     initializer "jump_back.methods" do |app|
       ApplicationController.send :include, JumpBack::Redirection
+      ActionView::Base.send :include, JumpBack::Helpers
     end
   end
 end

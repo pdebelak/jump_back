@@ -16,7 +16,7 @@ jump_back is tested in ruby version 1.9.3, 2.0, 2.1, and 2.2 using rails version
 
 Add this line to your application's Gemfile:
 
-    gem 'jump_back', '~> 0.2.1'
+    gem 'jump_back', '~> 0.3.1'
 
 And then execute:
 
@@ -112,6 +112,22 @@ Once you have saved the referer, you can call `return_to_referer`.
     def many_options
       return_to_referer a_different_path, alert: 'Many options!', status: 302
     end
+    
+### link_back
+
+`link_back` is a helper you can use in your views.
+
+    <%# will link_to :back or root_path if there is no referer %>
+    <%= link_back %>
+    
+    <%# will link_to :back or a_different_path if there is no referer %>
+    <%= link_back a_different_path %>
+    
+    <%# you can specify the text for the link %>
+    <%= link_back 'Go back!' %>
+    
+    <%# takes any link_to options %>
+    <%= link_back 'Go back!', a_different_path, remote: true, id: 'back', offsite: true %>
 
 ## Contributing
 

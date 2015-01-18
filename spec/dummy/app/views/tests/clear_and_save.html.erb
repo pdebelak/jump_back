@@ -1,3 +1,17 @@
 Clear and Save Path
 
 <%= link_to 'Go to save page', save_path %>
+
+<%= link_back 'Go back from whence you came!' %>
+
+<%= link_back class: 'red' %>
+
+<%= link_back 'Just a name!', id: 'just-name', remote: true %>
+
+<%= link_back save_path, method: :put %>
+
+<%= link_back 'All options!', save_path, id: 'all-options' %>
+
+<%= link_back 'http://localhost:3000/tests/clear_and_save', save_path %>
+
+<%= link_back 'Offsite okay!', offsite: true %>
