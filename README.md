@@ -11,6 +11,7 @@ jump_back is tested in ruby version 1.9.3, 2.0, 2.1, and 2.2 using rails version
 *From what I can tell it doesn't work with ruby version 2.2 with rails version 4.0, but I assume you wouldn't use those together, right?*
 
 [![Build Status](https://travis-ci.org/pdebelak/jump_back.svg?branch=master)](https://travis-ci.org/pdebelak/jump_back)
+[![Code Climate](https://codeclimate.com/github/pdebelak/jump_back/badges/gpa.svg)](https://codeclimate.com/github/pdebelak/jump_back)
 
 ## Installation
 
