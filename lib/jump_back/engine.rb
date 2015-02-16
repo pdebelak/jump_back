@@ -6,8 +6,12 @@ module JumpBack
       g.helper false
     end
     initializer "jump_back.methods" do |app|
-      ApplicationController.send :include, JumpBack::Redirection
-      ActionView::Base.send :include, JumpBack::Helpers
+      ActiveSupport.on_load :action_view do
+        include JumpBack::Helpers
+      end
+      ActiveSupport.on_load :action_controller do
+        include JumpBack::Redirection
+      end
     end
   end
 end

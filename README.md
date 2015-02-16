@@ -17,7 +17,7 @@ jump_back is tested in ruby version 1.9.3, 2.0, 2.1, and 2.2 using rails version
 
 Add this line to your application's Gemfile:
 
-    gem 'jump_back', '~> 0.3.1'
+    gem 'jump_back', '~> 0.3.2'
 
 And then execute:
 
